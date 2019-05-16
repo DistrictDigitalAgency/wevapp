@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'WivoUsers' => [
+            'driver' => 'session',
+            'provider' => 'WivoUsers',
+        ],
     ],
 
     /*
@@ -66,7 +71,7 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'WivoUsers' => [
             'driver' => 'eloquent',
             'model' => App\WivoUsers::class,
         ],

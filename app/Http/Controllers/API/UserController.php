@@ -10,6 +10,7 @@ use App\Votes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public $successStatus = 200;
@@ -27,6 +28,33 @@ class UserController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);
         }
 
+
+        $user = WivoUsers::where('mailAddress', '=', $request->mailAddress)->first();
+
+
+
+        if(Auth::guard('WivoUsers')->attempt(['mailAddress' => request('mailAddress'), 'password' => request('password')])){
+            $user = Auth::guard('WivoUsers')->user();
+
+
+            return response()->json(['success' => $user], $this-> successStatus);
+        }
+        else{
+            return response()->json(['error'=>'Unauthorised'], 401);
+        }
+
+
+      /*  if ($user === null) {
+            return response()->json(['error'=>'Unauthorised'], 401);
+        }
+        elseif (Hash::check($user->password, $request->getPassword()))
+        {
+
+            $success['name'] =  $user->password;
+
+
+            return response()->json(['success' => $success, $this-> successStatus]);
+        }*
 
 
         /*if(Auth::attempt(['mailAddress' => request('mailAddress'), 'password' => request('password')])){
@@ -63,6 +91,7 @@ class UserController extends Controller
         }
 
         $input = $request->all();
+
         $input['password'] = bcrypt($input['password']);
         $user = WivoUsers::create($input);
         $success['token'] =  $user->createToken('MyApp')-> accessToken;

@@ -9,7 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 
 
-class WivoUsers extends Model
+
+class WivoUsers extends Authenticatable
 {
     use Notifiable,HasApiTokens;
 

@@ -11,8 +11,7 @@
     <!-- Title -->
     <title>WeVote</title>
     <!-- Place favicon.ico in the root directory -->
-    <link rel="apple-touch-icon" href="{{URL::to('/')}}/public/images/apple-touch-icon.png">
-    <link rel="shortcut icon" type="image/ico" href="{{URL::to('/')}}/public/images/favicon.ico" />
+    <link rel="icon" type="image/png" href="{{asset('images/favicon.png')}}" />
     <!-- Plugin-CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
@@ -48,7 +47,7 @@
                 <div class="col-xs-12">
                     <div class="page-title text-center">
                         <h5 class="title">Contact US</h5>
-                        <h3 class="dark-color">Find Us By Bellow Details</h3>
+                        <h3 class="dark-color" style="color: #000;font-weight: 800;font-size: 35px;">it is always a pleasure to hear from you</h3>
                         <div class="space-60"></div>
                     </div>
                 </div>
@@ -59,7 +58,7 @@
                         <div class="box-icon">
                             <span class="lnr lnr-map-marker"></span>
                         </div>
-                        <p>8-54 Paya Lebar Square <br /> 60 Paya Lebar Roa SG, Singapore</p>
+                        <p>09, 15 october St. Manouba, 2010</p>
                     </div>
                     <div class="space-30 hidden visible-xs"></div>
                 </div>
@@ -68,7 +67,7 @@
                         <div class="box-icon">
                             <span class="lnr lnr-phone-handset"></span>
                         </div>
-                        <p>+65 93901336 <br /> +65 93901337</p>
+                        <p>+216 50.500.500</p>
                     </div>
                     <div class="space-30 hidden visible-xs"></div>
                 </div>
@@ -77,7 +76,7 @@
                         <div class="box-icon">
                             <span class="lnr lnr-envelope"></span>
                         </div>
-                        <p>yourmail@gmail.com <br /> backpiper.com@gmail.com
+                        <p>contact@wevo.io
                         </p>
                     </div>
                 </div>
@@ -90,7 +89,7 @@
             <div class="row">
                 <div class="col-xs-12 col-md-5">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    <span>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="lnr lnr-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></span>
+                    <span style="font-weight: 700;">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | WEVO</span>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <div class="space-30 hidden visible-xs"></div>
                 </div>

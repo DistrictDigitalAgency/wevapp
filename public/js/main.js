@@ -10,7 +10,7 @@
     /* Scroll to top
     ===================*/
     $.scrollUp({
-        scrollText: '<i class="lnr lnr-arrow-up"></i>',
+        scrollText: '<i style="color: #000;font-weight: 700;" class="lnr lnr-arrow-up"></i>',
         easingType: 'linear',
         scrollSpeed: 900,
         animation: 'fade'

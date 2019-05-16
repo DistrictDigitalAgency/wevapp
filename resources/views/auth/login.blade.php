@@ -4,7 +4,7 @@
     <body data-spy="scroll" data-target=".mainmenu-area">
     <!-- Preloader-content -->
     <div class="preloader">
-        <span><i class="lnr lnr-sun"></i></span>
+        <span>WEVO</span>
     </div>
     <!-- MainMenu-Area -->
     <nav class="mainmenu-area" data-spy="affix" data-offset-top="200">
@@ -19,16 +19,16 @@
             </div>
             <div class="collapse navbar-collapse" id="primary_menu">
                 <ul class="nav navbar-nav mainmenu">
-                    <li><a href="index.html#home_page">Home</a></li>
-                    <li><a href="index.html#about_page">About</a></li>
-                    <li><a href="index.html#features_page">Features</a></li>
-                    <li><a href="index.html#gallery_page">Gallery</a></li>
-                    <li><a href="index.html#price_page">Pricing</a></li>
-                    <li><a href="index.html#questions_page">FAQ</a></li>
-                    <li><a href="index.html#contact_page">Contacts</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#about_page">About</a></li>
+                    <li><a href="/#features_page">Individuals</a></li>
+                    <li><a href="/#gallery_page">Organizations</a></li>
+                    <li><a href="/#price_page">Features</a></li>
+                    <li><a href="/#contact_page">Contacts</a></li>
                 </ul>
                 <div class="right-button hidden-xs">
-                    <a href="#">Sign Up</a>
+                    <a href="#">Sign in</a>
+                    <a href="/register">Sign Up</a>
                 </div>
             </div>
         </div>
@@ -99,12 +99,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12 offset-md-12 text-center">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="bttn-default wow fadeInUp">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a style="color: #000;" class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

@@ -27,8 +27,8 @@
                     <li><a href="/#contact_page">Contacts</a></li>
                 </ul>
                 <div class="right-button hidden-xs">
-                    <a href="#">Sign in</a>
-                    <a href="/register">Sign Up</a>
+                    <a href="{{ route('login') }}">Sign in</a>
+                    <a href="{{ route('register') }}">Sign up</a>
                 </div>
             </div>
         </div>

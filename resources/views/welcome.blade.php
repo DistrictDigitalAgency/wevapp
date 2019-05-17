@@ -26,8 +26,8 @@
                     <li><a href="#contact_page">Contacts</a></li>
                 </ul>
                 <div class="right-button hidden-xs">
-                    <a href="/login">Sign in</a>
-                    <a href="/register">Sign up</a>
+                    <a href="{{ route('login') }}">Sign in</a>
+                    <a href="{{ route('register') }}">Sign up</a>
                 </div>
             </div>
         </div>
@@ -66,20 +66,18 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 gallery-slider">
                     <div class="gallery-slide">
-                        <div class="item"><img src="images/gallery-1.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-2.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-3.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-4.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-1.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-2.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-3.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-1.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-2.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-3.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-4.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-1.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-2.jpg" alt=""></div>
-                        <div class="item"><img src="images/gallery-3.jpg" alt=""></div>
+                        <div class="item"><img src="images/gallery-1.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-2.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-3.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-1.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-2.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-3.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-1.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-2.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-3.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-1.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-3.png" alt=""></div>
+                        <div class="item"><img src="images/gallery-2.png" alt=""></div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-5 col-lg-3" style="width: 40%;">

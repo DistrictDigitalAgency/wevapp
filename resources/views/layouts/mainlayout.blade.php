@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/responsive.css')}}">
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

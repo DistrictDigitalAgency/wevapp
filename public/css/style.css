@@ -99,7 +99,7 @@ body {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins';
     font-weight: 400;
     font-size: 16px;
     line-height: 32px;
@@ -927,13 +927,13 @@ input:-webkit-autofill:focus {
 }
 
 .footer-box .box-icon {
-    background: #000 !important;
+    background: #f3f4f5 !important;
     width: 75px;
     height: 75px;
     margin: auto auto 30px auto;
     text-align: center;
     line-height: 75px;
-    color: #ffffff;
+    color: #000;
     font-size: 20px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#482cbf+0,6ac6f0+100 */
     background: rgb(72, 44, 191);

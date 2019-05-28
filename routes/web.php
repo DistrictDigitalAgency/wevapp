@@ -59,7 +59,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
 
 
     Route::post('/wevo/add_question', [
-        'uses' => 'AdminController@addQuestion',
+        'uses' => 'AdminController/dashboard/campaign/create@addQuestion',
         'as' => 'admin.addQuestion'
     ]);
 

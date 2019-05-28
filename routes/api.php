@@ -26,6 +26,8 @@ Route::get('/apiV1_0', 'API\UserController@index');
 Route::get('/apiV1_0/getQuestionsByCategoryID', 'API\UserController@getQuestionsByCategoryID');
 Route::post('/apiV1_0/addVoteToAnswer', 'API\UserController@addVoteToAnswer');
 Route::post('/apiV1_0/registerUser', 'API\UserController@registerUser');
+Route::get('/apiV1_0/getStatistics', 'API\UserController@getStatistics');
+
 
 
 

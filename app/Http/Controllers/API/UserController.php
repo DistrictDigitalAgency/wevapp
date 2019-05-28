@@ -123,7 +123,12 @@ class UserController extends Controller
 
 
 
+    public function getStatistics()
+    {
+        $questions = Question::orderBy('id','desc')->take(10)->get();
+        return response()->json(['success' => $questions], $this-> successStatus);
 
+    }
 
 
 

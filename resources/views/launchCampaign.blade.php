@@ -108,7 +108,7 @@
                         <div class="card">
                             <h5 class="card-header">Campaign details</h5>
                             <div class="card-body">
-                                <form id="regForm" action="/dashboard/campaign/create" method="post">
+                                <form id="regForm" action="{{route('campaign.store')}}" method="post">
                                     {{ csrf_field() }}
                                    <!--Step one-->
                                     <div class="tab">

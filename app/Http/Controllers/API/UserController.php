@@ -126,7 +126,21 @@ class UserController extends Controller
     public function getStatistics()
     {
         $questions = Question::orderBy('id','desc')->take(10)->get();
-        return response()->json(['success' => $questions], $this-> successStatus);
+
+        $questionsReturned = new Question();
+
+        $questionsReturned=DB::select(
+            'SELECT questions.content,
+                   questions.answer1,questions.answer2,questions.answer3,questions.answer4
+                   ,questions.nbAnswer1,questions.nbAnswer2,questions.nbAnswer3,questions.nbAnswer4,
+                   (questions.nbAnswer1+questions.nbAnswer2+questions.nbAnswer3+questions.nbAnswer4) AS totalVotes
+           FROM questions
+
+           ORDER BY totalVotes DESC
+           LIMIT 10
+           ');
+
+        return response()->json(['success' => $questionsReturned], $this-> successStatus);
 
     }
 

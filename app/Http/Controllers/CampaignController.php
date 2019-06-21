@@ -322,4 +322,10 @@ class CampaignController extends Controller
     {
         //
     }
+
+
+    public function deposit()
+    {
+        return view('depositMoney');
+    }
 }

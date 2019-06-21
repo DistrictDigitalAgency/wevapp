@@ -22,13 +22,13 @@
                             <a class="nav-link" href="{{ route('dashboard') }}"  aria-expanded="false"  ><i class="fa fa-fw fa-chart-pie"></i>General statistics<span class="badge badge-success">6</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('my_campaigns') }}"  aria-expanded="false" ><i class="fa fa-fw fa-rocket"></i>Launched Campaigns</a>
+                            <a class="nav-link" href="{{ route('my_campaigns') }}"  aria-expanded="false" ><i class="fa fa-fw fa-rocket"></i>Launched Campaigns</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('launch_campaign') }}"  aria-expanded="false" ><i class="fa fa-fw fa-plus-circle"></i>Launch a new campaign</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
+                            <a class="nav-link active" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
                         </li>
 
                         <li class="nav-divider">
@@ -58,12 +58,12 @@
                 <div class="row">
                     <div class="col-xl-89 col-lg-9 col-md-9 col-sm-6 col-8">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Launched Campaigns</h2>
+                            <h2 class="pageheader-title">Deposit money</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Launched Campaigns</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Deposit money</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -102,72 +102,10 @@
                 </div>
 
                 <div class="row">
-                    <div class=" col-sm-12 col-md-12 col-lg-12 text-md-right">
-                        <a href="{{ route('launch_campaign') }}" class="launchcampaign btn btn-rounded btn-primary">Launch a new campaign</a>
-                    </div>
+                    <span>In order to deposit money, you can .... etc etc</span>
                 </div>
 
-                <div class="ecommerce-widget">
 
-
-                    <div class="row">
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="card">
-                                <div class="card-body p-0">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead class="bg-light">
-                                            <tr class="border-0">
-                                                <th class="text-center border-0">#</th>
-                                                <th class="text-center border-0">Campaign Name</th>
-                                                <th class="text-center border-0">Campaign ID</th>
-                                                <th class="text-center border-0">Number of Questions</th>
-                                                <th class="text-center border-0">Campaign Price</th>
-                                                <th class="text-center border-0">Start Date</th>
-                                                <th class="text-center border-0">Finish Date</th>
-                                                <th class="text-center border-0">Status</th>
-                                                <th class="text-center border-0">Details</th>
-
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-
-                                         @foreach($campaigns as $campaign)
-                                            <tr>
-                                                <td></td>
-                                                <td class="text-center">{{$campaign->name}}</td>
-                                                <td class="text-center">{{$campaign->id}}</td>
-                                                <td class="text-center">{{$campaign->nbQuestions}}</td>
-                                                <td class="text-center">{{$campaign->questionsTotalAmount}}</td>
-                                                <td class="text-center">{{$campaign->startDate}}</td>
-                                                <td class="text-center">{{$campaign->finishDate}}</td>
-                                                @if ($campaign->activeCampaign==0)
-                                                <td class="text-center"><span class="badge-dot badge-primary mr-1"></span>Not confirmed yet</td>
-                                                @elseif ($campaign->activeCampaign==1)
-                                                    <td class="text-center"><span class="badge-dot badge-success mr-1"></span>Confirmed</td>
-                                                @elseif ($campaign->activeCampaign==2)
-                                                    <td class="text-center"><span class="badge-dot badge-brand mr-1"></span>In transit</td>
-                                                @elseif ($campaign->activeCampaign==3)
-                                                    <td class="text-center"><span class="badge-dot badge-success mr-1"></span>Delivered</td>
-                                                @elseif ($campaign->activeCampaign==4)
-                                                    <td class="text-center"><span class="badge-dot badge-danger mr-1"></span>Stopped</td>
-                                                @endif
-
-                                                <td class="text-center"><a href="{{route('campaign.detail',['id'=>$campaign->id ])}}" class="btn btn-outline-light btn-block">View Details</a></td>
-
-                                            </tr>
-                                         @endforeach
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
 

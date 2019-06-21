@@ -50,6 +50,13 @@
                             <a class="nav-link" href="{{ route('admin.msgRequests') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Messages requests<span class="badge badge-secondary">New</span></a>
                         </li>
 
+                        <li class="nav-divider">
+                            Partners
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.partners.show') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Manage partners</a>
+                        </li>
+
                     </ul>
                 </div>
             </nav>

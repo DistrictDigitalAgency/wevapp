@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers\API;
+use App\Coupons;
 use App\WivoUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -85,15 +86,27 @@ class UserController extends Controller
             'city' => 'required',
             'phoneNumber' => 'required',
             'sex' => 'required',
+            'pin' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json(['error'=>$validator->errors()], 401);
         }
 
         $input = $request->all();
+        $user = new WivoUsers();
 
-        $input['password'] = bcrypt($input['password']);
-        $user = WivoUsers::create($input);
+        $user->fullName = $request->fullName;
+        $user->mailAddress = $request->mailAddress;
+        $user->password = bcrypt($request['password']);
+        $user->age = $request->age;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->phoneNumber = $request->phoneNumber;
+        $user->sex = $request->sex;
+        $user->pin = $request->pin;
+        $user ->save();
+
+
         $success['token'] =  $user->createToken('MyApp')-> accessToken;
         $success['name'] =  $user->fullName;
         return response()->json(['success'=>$success], $this-> successStatus);
@@ -163,8 +176,28 @@ class UserController extends Controller
             return response()->json(['error'=>$validator->errors()], 401);
         }
 
+
+
         $userVote = $request->all();
+        $user= WivoUsers::find($request->userID);
         $questionNeeded = Question::find($request->questionID);
+        //dd($questionNeeded->pointAmount);
+
+        if($questionNeeded->pointAmount>=10)
+        {
+            $userWin="true";
+
+            //update both question and user wallet amounts
+            Question::where('id', $request->questionID)
+                ->update(['pointAmount' => (int) $questionNeeded->pointAmount - 10]);
+            WivoUsers::where('id',$request->userID)
+                ->update(['walletAmount' => (int) $user->walletAmount + 10]);
+        }
+        else
+        {
+            $userWin="false";
+        }
+
         Votes::create($userVote);
         if($request->answerVotedFor=="answer1")
         {
@@ -189,14 +222,15 @@ class UserController extends Controller
 
         Question::where('id', $request->questionID)
             ->update(['nbAnswers' => (int) $questionNeeded->nbAnswers + 1]);
-        return response()->json(['success'=>"done"], $this-> successStatus);
+
+
+        return response()->json(['success'=>"done", 'userGotPoints'=>$userWin], $this-> successStatus);
     }
 
 
 
     /**
-     * Add vote to the database, vote should contain userID, questionID and answerVotedFor,
-     * answer contains: answer1, answer2, answer3 or answer4.
+     * Get the questions by category, category selection fel app
      */
     public function getQuestionsByCategoryID(Request $request)
     {
@@ -211,21 +245,6 @@ class UserController extends Controller
         $userID = $request->userID;
         $categoryID = $request->categoryID;
 
-        /*$Questions=Question::where('category_id', $categoryID)
-            ->join('votes', 'votes.questionID', '=', 'questions.id','LEFT OUTER')
-            ->where('votes.questionID', '=', NULL)
-            ->where('questions.active', 1)
-            ->select('questions.id',
-                    'questions.content',
-                    'questions.pointAmount',
-                    'questions.answer1',
-                    'questions.answer2',
-                    'questions.answer3',
-                    'questions.answer4')
-            ->orderBy('id', 'desc')
-                ->get();*/
-
-
         $Questions=DB::select(
            'SELECT questions.id,questions.content,questions.pointAmount,questions.answer1,questions.answer2,questions.answer3,questions.answer4
             FROM questions
@@ -238,17 +257,106 @@ class UserController extends Controller
             ORDER BY questions.id DESC ', [$userID, $categoryID]);
 
 
-
-
-
-
-
-
-
         return response()->json($Questions, $this-> successStatus);
     }
 
 
 
+    //get all the questions, for the random selection questions
+    public function getAllQuestions(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'userID' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
+
+        $userID = $request->userID;
+
+
+        $Questions=DB::select(
+            'SELECT questions.id,questions.content,questions.pointAmount,questions.answer1,questions.answer2,questions.answer3,questions.answer4
+            FROM questions
+            WHERE questions.id NOT IN (
+                SELECT questionID
+                FROM votes
+                WHERE userID=?)
+            AND (questions.active=1)
+            ORDER BY questions.id DESC ', [$userID]);
+
+        return response()->json($Questions, $this-> successStatus);
+
+    }
+
+
+    //generate coupon
+    public function generateCoupon(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'userName' => 'required',
+            'amount' => 'required',
+            'userID' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
+
+
+        $user = WivoUsers::find($request->userID);
+        //dd($user);
+        if ($user)
+        {
+            if (($request->amount) < ($user->walletAmount))
+            {
+                $coupon = new Coupons();
+                $coupon->amount = $request->amount;
+                $coupon->userName = $request->userName;
+                $coupon->save();
+                WivoUsers::where('id', $request->userID)
+                    ->update(['walletAmount' => $user->walletAmount - $coupon->amount]);
+                return response()->json(['success'=>"done"], $this-> successStatus);
+            }
+            else
+            {
+                return response()->json(['success'=>"fail", 'because of' => "user don't have enough money."], $this-> successStatus);
+
+            }
+        }
+        else
+            return response()->json(['success'=>"fail", 'because of' => "user doesn't exist."], $this-> successStatus);
+        }
+
+
+
+
+
+    //withdraw coupon function
+    public function withdrawCoupon(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'couponID' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
+        $coupon = Coupons::find($request->couponID);
+        if ($coupon->state=="0")
+        {
+        Coupons::where('id', $request->couponID)
+            ->update(['state' => '1']);
+            return response()->json(['success'=>"done"], $this-> successStatus);
+
+        }else{
+            return response()->json(['success'=>"failed"], $this-> successStatus);
+
+        }
+
+
+
+    }
 
 }

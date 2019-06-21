@@ -28,11 +28,11 @@
                             <a class="nav-link active" href="{{ route('launch_campaign') }}"  aria-expanded="false" ><i class="fa fa-fw fa-plus-circle"></i>Launch a new campaign</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Invoices</a>
+                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
                         </li>
 
                         <li class="nav-divider">
-                            WeVote
+                            wevo
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-exclamation-circle"></i> About us </a>

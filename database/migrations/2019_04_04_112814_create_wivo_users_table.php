@@ -24,6 +24,7 @@ class CreateWivoUsersTable extends Migration
             $table->integer('walletAmount')->default('0');
             $table->string('phoneNumber');
             $table->string('sex');
+            $table->string('pin');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

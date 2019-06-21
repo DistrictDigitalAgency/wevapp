@@ -47,6 +47,11 @@ Route::get('/dashboard/campaign/details/{id}', [
     'as' => 'campaign.detail'
 ]);
 
+Route::get('/dashboard/deposit', [
+    'uses' => 'CampaignController@deposit',
+    'as' => 'client.deposit'
+]);
+
 
 
 //Admin routes
@@ -120,5 +125,38 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
         'as' => 'admin.client.detail'
     ]);
 
+
+
+    //Partners management
+
+    Route::get('/wevo/partners', [
+        'uses' => 'AdminController@partnersList',
+        'as' => 'admin.partners.show'
+    ]);
+
+    Route::get('/wevo/partners/add', [
+        'uses' => 'AdminController@partnersAddForm',
+        'as' => 'admin.partners.add'
+    ]);
+
+    Route::post('/wevo/partners/add/save', [
+        'uses' => 'AdminController@addPartner',
+        'as' => 'admin.addPartner'
+    ]);
+
+    Route::get('/wevo/partners/delete', [
+        'uses' => 'AdminController@partnersDelete',
+        'as' => 'admin.partners.delete'
+    ]);
+
+    Route::get('/wevo/partners/edit', [
+        'uses' => 'AdminController@partnersEdit',
+        'as' => 'admin.partners.edit'
+    ]);
+
+    Route::post('/wevo/partners/edit/save', [
+        'uses' => 'AdminController@partnersEditsubmitted',
+        'as' => 'admin.partners.edit.submit'
+    ]);
 
 });

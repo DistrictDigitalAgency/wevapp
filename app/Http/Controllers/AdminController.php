@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Partners;
 use App\Question;
 use App\User;
 use App\Campaign;
@@ -257,6 +258,77 @@ class AdminController extends Controller
     }
 
 
+    /***********************$************************/
+    //Partners management
+    public function partnersList()
+    {
+
+        $partners=Partners::orderBy('created_at', 'desc')
+            ->get();
+
+        return view('/adminDashboard/partnersList')
+            ->with('partners',$partners);
+
+    }
+
+    public function partnersAddForm()
+    {
+        return view('/adminDashboard/partnersAdd');
+
+    }
+
+    public function addPartner(Request $request)
+    {
+
+        $partner = new Partners();
+        $partner->name=$request->respname;
+        $partner->email=$request->respmail;
+        $partner->organization=$request->businessname;
+        $partner->phonenumber=$request->respphone;
+        $partner->businesstype=$request->businesstype;
+
+
+        $partner->save();
+
+        Session::flash('success','Partner added successfully ! ');
+        return redirect()->route('admin.partners.show');
+    }
+
+
+
+    public function partnersDelete(Request $request)
+    {
+        $partner = Partners::find($request->id);
+        $partner->delete();
+
+        Session::flash('success','Partner deleted successfully ! ');
+        return redirect()->route('admin.partners.show');
+    }
+
+
+    public function partnersEdit(Request $request)
+    {
+        $partner = Partners::find($request->id);
+        return view('/adminDashboard/partnersEdit')
+            ->with('partner',$partner);
+
+    }
+
+    public function partnersEditsubmitted(Request $request)
+    {
+        $partner = Partners::find($request->id);
+        $partner->name=$request->respname;
+        $partner->email=$request->respmail;
+        $partner->organization=$request->businessname;
+        $partner->phonenumber=$request->respphone;
+        $partner->businesstype=$request->businesstype;
+
+
+        $partner->save();
+
+        Session::flash('success','Partner Editted successfully ! ');
+        return redirect()->route('admin.partners.show');
+    }
 
 
 }

@@ -22,7 +22,7 @@
                             <a class="nav-link" href="{{ route('admin.statistics') }}"  aria-expanded="false"  ><i class="fab fa-fw fa-wpforms"></i>Wevo statistics<span class="badge badge-success">6</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('admin.addQuestion') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Add question</a>
+                            <a class="nav-link" href="{{ route('admin.addQuestion') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Add question</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.questionList') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Questions list</a>
@@ -54,7 +54,7 @@
                             Partners
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.partners.show') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Manage partners</a>
+                            <a class="nav-link active" href="{{ route('admin.partners.show') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Manage partners</a>
                         </li>
 
                     </ul>
@@ -73,12 +73,12 @@
                 <div class="row">
                     <div class="col-xl-89 col-lg-9 col-md-9 col-sm-6 col-8">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Add a question</h2>
+                            <h2 class="pageheader-title">Partners list</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ route('admin.statistics') }}" class="breadcrumb-link">Admin Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Add a question</li>
+                                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Admin Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Partners list</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -105,72 +105,54 @@
                     </div>
                 </div>
 
-                <div class="row">
 
+
+                <div class="row">
+                    <!-- ============================================================== -->
+
+                    <!-- ============================================================== -->
+
+                    <!-- recent orders  -->
+                    <!-- ============================================================== -->
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
-                            <div style="display:block;" class="card-header">
-                                <h5 style="float:left;">Add / Import questions</h5>
-                                <a style="float:right;color: #1abc9c;font-size: 14px;" href=""><i class="fas fa-file-code"></i> Import CSV</a>
-                            </div>
-                            <div class="card-body">
-                                <form id="regForm" action="{{ route('admin.addQuestion') }}" method="post">
-                                    {{ csrf_field() }}
-                                <div class="form-row question-div">
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                                    <input name="questionContent" required id="inputQuestion" type="text" placeholder="Enter your question.." class="campaign_form form-control">
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6">
-                                    <select class="campaign_form form-control" id="categorySelect" name="categorySelect">
-                                        <option value="" disabled selected>Select Category</option>
-                                        <option value="1">Culture</option>
-                                        <option value="2">High-Tech</option>
-                                        <option value="3">Politics</option>
-                                        <option value="4">Economics</option>
-                                        <option value="5">Social</option>
-                                        <option value="6">Sport</option>
-                                        <option value="7">Art</option>
-                                    </select>
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
-                                    <input name="weCoinAmount" required id="weCoinInput" type="text" placeholder="WeCoin amount" class="campaign_form form-control">
-                                </div>
+                            <div class="card-body p-0">
+                                <form id="regForm" action="{{ route('admin.addPartner') }}" method="post">
+                                {{ csrf_field() }}
 
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12">
-                                    <input type="date" name="startDate" required="" class="campaign_form form-control date-inputmask" id="startCampaign" placeholder="Start date">
-                                </div>
-                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 ">
-                                    <input type="date" required="" name="finishDate" class="campaign_form form-control date-inputmask" id="endCampaign"  placeholder="Finish date">
-                                </div>
+                                        <div class="form-group">
+                                            <label style="padding-left: 55px;" for="businessname" class="col-form-label">Business name</label>
+                                            <input id="businessname" name="businessname" type="text" class="campaign_form form-control">
+                                        </div>
 
-                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                                        <input name="answer1" id="answer1" required type="text" placeholder="Answer 1" class="campaign_form form-control">
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                                        <input name="answer2" id="answer2" required type="text" placeholder="Answer 2" class="campaign_form form-control">
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                                        <input name="answer3" id="answer3" type="text" placeholder="Answer 3" class="campaign_form form-control">
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3">
-                                        <input name="answer4" id="answer4" type="text" placeholder="Answer 4" class="campaign_form form-control">
-                                    </div>
+                                        <div class="form-group">
+                                            <label style="padding-left: 55px;" for="Businesstype" class="col-form-label">Business Type</label>
+                                            <input id="businesstype" name="businesstype" type="text" class="campaign_form form-control">
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label style="padding-left: 55px;" for="respname" class="col-form-label">Responsable name</label>
+                                            <input id="respname" name="respname" type="text" class="campaign_form form-control">
+                                        </div>
 
-                                    <button class="btn btn-outline-light btn-block" type="submit"><i class="fas fa-plus-circle"></i> Add question </button>
+                                        <div class="form-group">
+                                            <label style="padding-left: 55px;" for="respphone" class="col-form-label">Responsable phone number</label>
+                                            <input id="respphone" name="respphone" type="text" class="campaign_form form-control">
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label style="padding-left: 55px;" for="respmail" class="col-form-label">Responsable e-mail</label>
+                                            <input id="respmail" name="respmail" type="text" class="campaign_form form-control">
+                                        </div>
 
-
-                                </div>
+                                        <button class="btn btn-outline-light btn-block" type="submit"><i class="fas fa-plus-circle"></i> Add partner </button>
 
                             </div>
-
                         </div>
                     </div>
+                    <!-- ============================================================== -->
+                    <!-- end recent orders  -->
                 </div>
-
-
-
 
 
 

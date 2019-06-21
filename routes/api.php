@@ -24,9 +24,13 @@ Route::post('/apiV1_0/register', 'API\UserController@register');
 
 Route::get('/apiV1_0', 'API\UserController@index');
 Route::get('/apiV1_0/getQuestionsByCategoryID', 'API\UserController@getQuestionsByCategoryID');
+Route::get('/apiV1_0/getAllQuestions', 'API\UserController@getAllQuestions');
 Route::post('/apiV1_0/addVoteToAnswer', 'API\UserController@addVoteToAnswer');
 Route::post('/apiV1_0/registerUser', 'API\UserController@registerUser');
 Route::get('/apiV1_0/getStatistics', 'API\UserController@getStatistics');
+
+Route::post('/apiV1_0/generateCoupon', 'API\UserController@generateCoupon');
+Route::post('/apiV1_0/withdrawCoupon', 'API\UserController@withdrawCoupon');
 
 
 

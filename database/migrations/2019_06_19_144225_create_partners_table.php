@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVotesTable extends Migration
+class CreatePartnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateVotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('votes', function (Blueprint $table) {
+        Schema::create('partners', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('userID');
-            $table->integer('questionID');
-            $table->string('answerVotedFor');
-            $table->integer('synchronized')->default('0');
-
+            $table->string('name');
+            $table->string('email');
+            $table->timestamp('email_phpverified_at')->nullable();
+            $table->string('organization');
+            $table->string('phonenumber');
+            $table->string('businesstype');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateVotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('votes');
+        Schema::dropIfExists('partners');
     }
 }

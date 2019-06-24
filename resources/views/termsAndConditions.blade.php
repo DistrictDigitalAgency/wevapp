@@ -28,7 +28,7 @@
                             <a class="nav-link" href="{{ route('launch_campaign') }}"  aria-expanded="false" ><i class="fa fa-fw fa-plus-circle"></i>Launch a new campaign</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('client.deposit') }}"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
+                            <a class="nav-link" href="{{ route('client.deposit') }}"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
                         </li>
 
                         <li class="nav-divider">
@@ -41,7 +41,7 @@
                             <a class="nav-link" href="{{ route('client.contact') }}"  aria-expanded="false" ><i class="fas fa-fw fa-envelope"></i>Contact us <span class="badge badge-secondary">New</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('client.terms') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Terms & conditions <span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link active" href="{{ route('client.terms') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Terms & conditions <span class="badge badge-secondary">New</span></a>
                         </li>
 
                     </ul>
@@ -58,12 +58,12 @@
                 <div class="row">
                     <div class="col-xl-89 col-lg-9 col-md-9 col-sm-6 col-8">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Deposit money</h2>
+                            <h2 class="pageheader-title">Terms and conditions</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Deposit money</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Terms and conditions</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="row">
-                    <span>In order to deposit money, you can .... etc etc</span>
+                    <span>Terms and conditions</span>
                 </div>
 
 

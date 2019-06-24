@@ -35,13 +35,13 @@
                             wevo
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-exclamation-circle"></i> About us </a>
+                            <a class="nav-link" href="{{ route('client.aboutus') }}"  aria-expanded="false" ><i class="fas fa-fw fa-exclamation-circle"></i> About us </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-envelope"></i>Contact us <span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link" href="{{ route('client.contact') }}"  aria-expanded="false" ><i class="fas fa-fw fa-envelope"></i>Contact us <span class="badge badge-secondary">New</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Terms & conditions <span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link" href="{{ route('client.terms') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Terms & conditions <span class="badge badge-secondary">New</span></a>
                         </li>
                     </ul>
                 </div>

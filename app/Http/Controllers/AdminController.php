@@ -116,6 +116,13 @@ class AdminController extends Controller
 
     public function questionDetails($id)
     {
+        $question=Question::where('id', $id)
+            ->first();
+
+        //dd($question);
+        return view('/adminDashboard/questionDetails')
+            ->with('question',$question);
+
 
     }
 
@@ -206,9 +213,10 @@ class AdminController extends Controller
     {
 
         $client=User::where('id', $id)
-            ->get();
+            ->first();
 
-        return view('/adminDashboard/campaignDetail')
+
+        return view('/adminDashboard/clientDetails')
         ->with('client',$client);
     }
 

@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Campaign;
 use App\Question;
+use App\Mail\ContactMail;
+
 use App\User;
 use phpDocumentor\Reflection\Types\String_;
 use Session;
 use App\Charts\questionChart;
 use DateTime;
+use Mail;
 
 use Illuminate\Http\Request;
 
@@ -53,8 +56,7 @@ class CampaignController extends Controller
 
 
         //Get the total amount from questions
-
-         $totalAmount = (int)$request->questionPrice0
+         $totalAmount =    (int)$request->questionPrice0
                          + (int) $request->questionPrice1
                          + (int) $request->questionPrice2
                          + (int) $request->questionPrice3
@@ -70,7 +72,6 @@ class CampaignController extends Controller
 
 
         $user_amount = auth()->user()->amount;
-
 
 
         //dd($request->all());
@@ -101,11 +102,13 @@ class CampaignController extends Controller
                 $campaign->activeCampaign=0;
                 $campaign->save();
 
+                //update the user wallet amount
+                User::where('id', auth()->user()->id)
+                    ->update(['amount' => (int) auth()->user()->amount - (int) $totalAmount]);
 
                 for($i = 0;$i<($campaign->nbQuestions);$i++)
                 {
                     $question = new Question();
-                    //$question->category_id = 1;
                     $question->campaign_id = $campaign->id;
                     $question->user_id = auth()->user()->id;
                     $question->startDate = $request->startDate;
@@ -117,73 +120,72 @@ class CampaignController extends Controller
 
                    if ($i==0) {
                         $question->content = $request->questionContent0;
-                        $question->pointAmount = (int) (($request->questionPrice0/100)*20);
+                        $question->pointAmount = (int) (($request->questionPrice0 * 10));
                         $question->answer1 = $request->answer10;
                         $question->answer2 = $request->answer20;
                         $question->answer3 = $request->answer30;
                         $question->answer4 = $request->answer40;
-
                         $question->save();
 
                     }else if ($i==1) {
                         $question->content = $request->questionContent1;
-                        $question->pointAmount = (int) (($request->questionPrice1/100)*20);
-                       $question->answer1 = $request->answer11;
-                       $question->answer2 = $request->answer21;
-                       $question->answer3 = $request->answer31;
-                       $question->answer4 = $request->answer41;
+                        $question->pointAmount = (int) (($request->questionPrice1 * 10));
+                        $question->answer1 = $request->answer11;
+                        $question->answer2 = $request->answer21;
+                        $question->answer3 = $request->answer31;
+                        $question->answer4 = $request->answer41;
                         $question->save();
 
 
                     }else if ($i==2) {
                         $question->content = $request->questionContent2;
-                        $question->pointAmount = (int) (($request->questionPrice2/100)*20);
-                       $question->answer1 = $request->answer12;
-                       $question->answer2 = $request->answer22;
-                       $question->answer3 = $request->answer32;
-                       $question->answer4 = $request->answer42;
+                        $question->pointAmount = (int) (($request->questionPrice2 * 10));
+                        $question->answer1 = $request->answer12;
+                        $question->answer2 = $request->answer22;
+                        $question->answer3 = $request->answer32;
+                        $question->answer4 = $request->answer42;
                         $question->save();
 
 
                     }else if ($i==3) {
                         $question->content = $request->questionContent3;
-                        $question->pointAmount = (int) (($request->questionPrice3/100)*20);
-                       $question->answer1 = $request->answer13;
-                       $question->answer2 = $request->answer23;
-                       $question->answer3 = $request->answer33;
-                       $question->answer4 = $request->answer43;
+                        $question->pointAmount = (int) (($request->questionPrice3 * 10));
+                        $question->answer1 = $request->answer13;
+                        $question->answer2 = $request->answer23;
+                        $question->answer3 = $request->answer33;
+                        $question->answer4 = $request->answer43;
                         $question->save();
 
                     }else if ($i==4) {
                         $question->content = $request->questionContent4;
-                        $question->pointAmount = (int) (($request->questionPrice4/100)*20);
-                       $question->answer1 = $request->answer14;
-                       $question->answer2 = $request->answer24;
-                       $question->answer3 = $request->answer34;
-                       $question->answer4 = $request->answer44;
+                        $question->pointAmount = (int) (($request->questionPrice4 * 10));
+                        $question->answer1 = $request->answer14;
+                        $question->answer2 = $request->answer24;
+                        $question->answer3 = $request->answer34;
+                        $question->answer4 = $request->answer44;
                         $question->save();
 
                     }else if ($i==5) {
                         $question->content = $request->questionContent5;
-                        $question->pointAmount = (int) (($request->questionPrice5/100)*20);
-                       $question->answer1 = $request->answer15;
-                       $question->answer2 = $request->answer25;
-                       $question->answer3 = $request->answer35;
-                       $question->answer4 = $request->answer45;
+                        $question->pointAmount = (int) (($request->questionPrice5 * 10));
+                        $question->answer1 = $request->answer15;
+                        $question->answer2 = $request->answer25;
+                        $question->answer3 = $request->answer35;
+                        $question->answer4 = $request->answer45;
                         $question->save();
 
                     }else if ($i==6) {
                         $question->content = $request->questionContent6;
-                        $question->pointAmount = (int) (($request->questionPrice6/100)*20);
-                       $question->answer1 = $request->answer16;
-                       $question->answer2 = $request->answer26;
-                       $question->answer3 = $request->answer36;
-                       $question->answer4 = $request->answer46;
+                        $question->pointAmount = (int) (($request->questionPrice6 * 10));
+                        $question->answer1 = $request->answer16;
+                        $question->answer2 = $request->answer26;
+                        $question->answer3 = $request->answer36;
+                        $question->answer4 = $request->answer46;
                         $question->save();
 
                     }else if ($i==7) {
                         $question->content = $request->questionContent7;
-                        $question->pointAmount = (int) (($request->questionPrice7/100)*20);
+                        $question->pointAmount = (int) (($request->questionPrice7 * 10));
                        $question->answer1 = $request->answer17;
                        $question->answer2 = $request->answer27;
                        $question->answer3 = $request->answer37;
@@ -192,7 +194,7 @@ class CampaignController extends Controller
 
                     }else if ($i==8) {
                         $question->content = $request->questionContent8;
-                        $question->pointAmount = (int) (($request->questionPrice8/100)*20);
+                        $question->pointAmount = (int) (($request->questionPrice8 * 10));
                        $question->answer1 = $request->answer18;
                        $question->answer2 = $request->answer28;
                        $question->answer3 = $request->answer38;
@@ -201,7 +203,7 @@ class CampaignController extends Controller
 
                     }else if ($i==9) {
                         $question->content = $request->questionContent9;
-                        $question->pointAmount = (int) (($request->questionPrice9/100)*20);
+                        $question->pointAmount = (int) (($request->questionPrice9 *10));
                        $question->answer1 = $request->answer19;
                        $question->answer2 = $request->answer29;
                        $question->answer3 = $request->answer39;
@@ -209,16 +211,8 @@ class CampaignController extends Controller
                         $question->save();
 
                     }
-
-
                 }
 
-
-
-
-                //update the user wallet amount
-                User::where('id', auth()->user()->id)
-                    ->update(['amount' => (int) auth()->user()->amount - (int) $totalAmount]);
 
                 Session::flash('success','Campaign created successfully. We will confirm it and get back to you shortly, keep tracking the updates ');
                 return redirect()->route('my_campaigns');
@@ -247,8 +241,6 @@ class CampaignController extends Controller
         $campaign = Campaign::find($id);
 
 
-
-
         //Analytics queries
         $questions=Question::where('campaign_id', $campaign->id)
             ->join('categories','categories.id','=', 'questions.category_id')
@@ -256,9 +248,8 @@ class CampaignController extends Controller
             ->orderBy('id', 'asc')
             ->get();
 
+
         $nbOfQuestion = Question::where('campaign_id', $campaign->id)->count();
-
-
 
 
         $chartForAnswers = collect([]);
@@ -269,7 +260,6 @@ class CampaignController extends Controller
             $chartForAnswer = new questionChart;
             $chartForAnswer->labels([$questions[$i]->answer1, $questions[$i]->answer2, $questions[$i]->answer3, $questions[$i]->answer4]);
             $chartForAnswer->dataset('Votes for answers', 'line', [$questions[$i]->nbAnswer1,$questions[$i]->nbAnswer2,$questions[$i]->nbAnswer3,$questions[$i]->nbAnswer4]);
-
             $chartForAnswers->push($chartForAnswer);
 
         }
@@ -283,7 +273,6 @@ class CampaignController extends Controller
             ->with('campaign', $campaign)
             -> with('nbOfQuestion',$nbOfQuestion)
             -> with('questions',$questions)
-
             ->with('chartForAnswer', $chartForAnswer)
             ->with('chartForAnswers', $chartForAnswers->toArray());
 
@@ -327,5 +316,42 @@ class CampaignController extends Controller
     public function deposit()
     {
         return view('depositMoney');
+    }
+
+
+    public function contact()
+    {
+        return view('contactUs');
+    }
+
+
+    public function termsandconditions()
+    {
+        return view('termsAndConditions');
+    }
+
+    public function aboutus()
+    {
+        return view('aboutUs');
+    }
+
+
+
+    public function sendMail(Request $request)
+    {
+
+
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
+        Mail::to('inc.wevo@gmail.com')->send(new ContactFormMail($request));
+        dd($request);
+
+        Session::flash('success','Thanks for your message. We\'ll be in touch.');
+        return redirect()->route('client.contact');
+
+
     }
 }

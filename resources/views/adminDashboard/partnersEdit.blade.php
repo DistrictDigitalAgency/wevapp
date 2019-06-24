@@ -46,9 +46,7 @@
                             <a class="nav-link" href="{{ route('admin.questionSuggestions') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Question suggestions<span class="badge badge-secondary">New</span></a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.msgRequests') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Messages requests<span class="badge badge-secondary">New</span></a>
-                        </li>
+
 
                         <li class="nav-divider">
                             Partners

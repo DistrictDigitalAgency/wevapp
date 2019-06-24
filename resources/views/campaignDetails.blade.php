@@ -32,7 +32,7 @@
                             <a class="nav-link" href="{{ route('launch_campaign') }}"  aria-expanded="false" ><i class="fa fa-fw fa-plus-circle"></i>Launch a new campaign</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
+                            <a class="nav-link" href="{{ route('client.deposit') }}"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
                         </li>
 
 
@@ -40,13 +40,13 @@
                             wevo
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-exclamation-circle"></i> About us </a>
+                            <a class="nav-link" href="{{ route('client.aboutus') }}"  aria-expanded="false" ><i class="fas fa-fw fa-exclamation-circle"></i> About us </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fas fa-fw fa-envelope"></i>Contact us <span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link" href="{{ route('client.contact') }}"  aria-expanded="false" ><i class="fas fa-fw fa-envelope"></i>Contact us <span class="badge badge-secondary">New</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Terms & conditions <span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link" href="{{ route('client.terms') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Terms & conditions <span class="badge badge-secondary">New</span></a>
                         </li>
                     </ul>
                 </div>
@@ -307,16 +307,8 @@
 
 
 @section('JSincluding')
-    {!! $chartForAnswers[0]->script() !!}
-    {!! $chartForAnswers[1]->script() !!}
-    {!! $chartForAnswers[2]->script() !!}
-    {!! $chartForAnswers[3]->script() !!}
-    {!! $chartForAnswers[4]->script() !!}
-    {!! $chartForAnswers[5]->script() !!}
-    {!! $chartForAnswers[6]->script() !!}
-    {!! $chartForAnswers[7]->script() !!}
-    {!! $chartForAnswers[8]->script() !!}
-    {!! $chartForAnswers[9]->script() !!}
-
+    @for ($i = 0; $i < $nbOfQuestion; $i++)
+        {!! $chartForAnswers[$i]->script() !!}
+    @endfor
 @endsection
 

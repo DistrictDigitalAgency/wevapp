@@ -103,62 +103,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
                         <div class="border-3 border-top border-top-primary card text-center">
                             <div class="card-body">
-                                <h5 class="text-muted">Campaign Name</h5>
+                                <h5 class="text-muted">Question ID</h5>
                                 <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">{{$campaign->name}}</h6>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="border-3 border-top border-top-primary card text-center">
-                            <div class="card-body">
-                                <h5 class="text-muted">Campaign objectives</h5>
-                                <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">{{$campaign->objectives}}</h6>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="border-3 border-top border-top-primary card text-center">
-                            <div class="card-body">
-                                <h5 class="text-muted">Campaign total amount</h5>
-                                <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">{{$campaign->questionsTotalAmount}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="border-3 border-top border-top-primary card text-center">
-                            <div class="card-body">
-                                <h5 class="text-muted">Status</h5>
-                                <div class="metric-value d-inline-block">
-                                    @if ($campaign->activeCampaign==0)
-                                        <h6 class="mb-1"><span class="badge-dot badge-primary mr-1"></span>Not confirmed yet</h6>
-                                    @elseif ($campaign->activeCampaign==1)
-                                        <h6 class="mb-1"><span class="badge-dot badge-brand mr-1"></span>In transit</h6>
-                                    @elseif ($campaign->activeCampaign==2)
-                                        <h6 class="mb-1"><span class="badge-dot badge-success mr-1"></span>Delivered</h6>
-                                    @elseif ($campaign->activeCampaign==-1)
-                                        <h6 class="mb-1"><span class="badge-dot badge-danger mr-1"></span>Stopped</h6>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="border-3 border-top border-top-primary card text-center">
-                            <div class="card-body">
-                                <h5 class="text-muted">Campaign date</h5>
-                                <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">from {{$campaign->startDate}} to {{$campaign->finishDate}}</h6>
+                                    <h6 class="mb-1">{{$question->id}}</h6>
                                 </div>
 
                             </div>
@@ -166,143 +116,126 @@
                     </div>
 
 
-                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-12 col-12">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="border-3 border-top border-top-primary card text-center">
                             <div class="card-body">
-                                <h5 class="text-muted">Target sex</h5>
+                                <h5 class="text-muted">Question content</h5>
                                 <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">{{$campaign->desiredSexe}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="border-3 border-top border-top-primary card text-center">
-                            <div class="card-body">
-                                <h5 class="text-muted">Minimum age</h5>
-                                <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">{{$campaign->desiredAgeMin}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="border-3 border-top border-top-primary card text-center">
-                            <div class="card-body">
-                                <h5 class="text-muted">Maximum age</h5>
-                                <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">{{$campaign->desiredAgeMax}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="border-3 border-top border-top-primary card text-center">
-                            <div class="card-body">
-                                <h5 class="text-muted"># of questions</h5>
-                                <div class="metric-value d-inline-block">
-                                    <h6 class="mb-1">{{$campaign->nbQuestions}}</h6>
+                                    <h6 class="mb-1">{{$question->content}}</h6>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="row">
-                    @for ($i = 0; $i < $nbOfQuestion; $i++)
 
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-                            <div class="card">
-                                <h5 class="card-header">Question ID: {{$questions[$i]->id}} with category: {{$questions[$i]->name}} </h5>
-                                <div class="card-body">
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h5><span style="font-weight: bold;">Question content:</span> {{$questions[$i]->content}}</h5>
-                                        </div>
-                                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Amount</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->pointAmount}}</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4">
-                            <div class="card">
-                                <h5 class="card-header">1st Answer</h5>
-                                <div class="card-body">
-                                    <h5>{{$questions[$i]->answer1}}</h5>
+                    </div>
+
+
+
+
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Answer 1</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->answer1}}</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4">
-                            <div class="card">
-                                <h5 class="card-header">2nd Answer</h5>
-                                <div class="card-body">
-                                    <h5>{{$questions[$i]->answer2}}</h5>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Answer 2</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->answer2}}</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4">
-                            <div class="card">
-                                <h5 class="card-header">3rd Answer</h5>
-                                <div class="card-body">
-                                    @if($questions[$i]->answer3=="")
-                                        <h5>-</h5>
-                                    @else
-                                        <h5>{{$questions[$i]->answer3}}</h5>
-                                    @endif
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Answer 3</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->answer3}}</h6>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-4 col-4">
-                            <div class="card">
-                                <h5 class="card-header">4th Answer</h5>
-                                <div class="card-body">
-                                    @if($questions[$i]->answer4=="")
-                                        <h5>-</h5>
-                                    @else
-                                        <h5>{{$questions[$i]->answer4}}</h5>
-                                    @endif
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Answer 4</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->answer4}}</h6>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Answers vote</h5>
-                                <div class="card-body">
-                                    {!! $chartForAnswers[$i]->container() !!}
+
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Votes for answer 1</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->nbAnswer1}}</h6>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                    @endfor
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Votes for answer 2</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->nbAnswer2}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Votes for answer 3</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->nbAnswer3}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-
-
-
-
-
-
-
-                </div>
-
-
-
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                        <div class="border-3 border-top border-top-primary card text-center">
+                            <div class="card-body">
+                                <h5 class="text-muted">Votes for answer 4</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h6 class="mb-1">{{$question->nbAnswer4}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
 
 
 @endsection
-
-
-@section('JSincluding')
-    @for ($i = 0; $i < $nbOfQuestion; $i++)
-        {!! $chartForAnswers[$i]->script() !!}
-    @endfor
-
-@endsection
-

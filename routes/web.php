@@ -1,5 +1,9 @@
 <?php
 
+
+use App\Mail\ContactMail;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +56,27 @@ Route::get('/dashboard/deposit', [
     'as' => 'client.deposit'
 ]);
 
+Route::get('/dashboard/about_us', [
+    'uses' => 'CampaignController@aboutus',
+    'as' => 'client.aboutus'
+]);
+
+Route::get('/dashboard/terms_and_conditions', [
+    'uses' => 'CampaignController@termsandconditions',
+    'as' => 'client.terms'
+]);
+
+Route::get('/dashboard/contact_us', [
+    'uses' => 'CampaignController@contact',
+    'as' => 'client.contact'
+]);
+
+Route::post('/dashboard/contact_us/send', function (Request $request){
+    //dd($request);
+    Mail::send(new ContactMail($request));
+    return redirect()->route('client.contact');
+
+},['as'=>'client.sendMail']);
 
 
 //Admin routes
@@ -64,7 +89,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
 
 
     Route::post('/wevo/add_question', [
-        'uses' => 'AdminController/dashboard/campaign/create@addQuestion',
+        'uses' => 'AdminController@addQuestion',
         'as' => 'admin.addQuestion'
     ]);
 

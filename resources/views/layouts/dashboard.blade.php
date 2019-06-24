@@ -18,7 +18,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
 
-    <title>Wivo | Dashboard</title>
+    <title>wevo | Dashboard</title>
 </head>
 
 <body>

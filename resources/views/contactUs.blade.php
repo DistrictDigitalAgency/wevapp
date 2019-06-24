@@ -28,7 +28,7 @@
                             <a class="nav-link" href="{{ route('launch_campaign') }}"  aria-expanded="false" ><i class="fa fa-fw fa-plus-circle"></i>Launch a new campaign</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('client.deposit') }}"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
+                            <a class="nav-link" href="{{ route('client.deposit') }}"  aria-expanded="false" ><i class="fas fa-fw fa-clipboard"></i>Deposit</a>
                         </li>
 
                         <li class="nav-divider">
@@ -38,7 +38,7 @@
                             <a class="nav-link" href="{{ route('client.aboutus') }}"  aria-expanded="false" ><i class="fas fa-fw fa-exclamation-circle"></i> About us </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('client.contact') }}"  aria-expanded="false" ><i class="fas fa-fw fa-envelope"></i>Contact us <span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link active" href="{{ route('client.contact') }}"  aria-expanded="false" ><i class="fas fa-fw fa-envelope"></i>Contact us <span class="badge badge-secondary">New</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('client.terms') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Terms & conditions <span class="badge badge-secondary">New</span></a>
@@ -58,12 +58,12 @@
                 <div class="row">
                     <div class="col-xl-89 col-lg-9 col-md-9 col-sm-6 col-8">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Deposit money</h2>
+                            <h2 class="pageheader-title">Contact us</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Deposit money</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Contact us</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -102,7 +102,22 @@
                 </div>
 
                 <div class="row">
-                    <span>In order to deposit money, you can .... etc etc</span>
+
+                    <div class="col-md-12" style="background-color: #fff;">
+                            <form id="regForm" action="{{url('/dashboard/contact_us/send')}}" method="post">
+                            {{ csrf_field() }}
+                                    <input name="name" id="name" required type="text" placeholder="Your name" class="campaign_form form-control">
+                                    <input name="email" id="email" required type="text" placeholder="Your email" class="campaign_form form-control">
+                                    <textarea name="content" id="content" placeholder="Your message" class="campaign_form form-control"  rows="5" required></textarea>
+
+
+                                <button class="btn btn-outline-light btn-block" type="submit"><i class="fas fa-plus-circle"></i> Send </button>
+                            </form>
+                    </div>
+
+
+
+
                 </div>
 
 

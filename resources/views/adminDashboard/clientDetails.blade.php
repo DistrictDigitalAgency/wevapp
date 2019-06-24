@@ -36,14 +36,14 @@
                             <a class="nav-link" href="{{ route('admin.clientStats') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Clients statistics</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.clientList') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Clients list<span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link active" href="{{ route('admin.clientList') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Clients list<span class="badge badge-secondary">New</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.launchedCampaigns') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Launched campaigns<span class="badge badge-secondary">New</span></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('admin.questionSuggestions') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Question suggestions<span class="badge badge-secondary">New</span></a>
+                            <a class="nav-link" href="{{ route('admin.questionSuggestions') }}"  aria-expanded="false" ><i class="fab fa-fw fa-wpforms"></i>Question suggestions<span class="badge badge-secondary">New</span></a>
                         </li>
 
 
@@ -71,12 +71,12 @@
                 <div class="row">
                     <div class="col-xl-89 col-lg-9 col-md-9 col-sm-6 col-8">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Question suggestion</h2>
+                            <h2 class="pageheader-title">Client details</h2>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="breadcrumb-link">Admin Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Question suggestion</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Client details</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -105,8 +105,29 @@
 
 
 
+                <div class="row">
+                    <!-- ============================================================== -->
 
+                    <!-- ============================================================== -->
 
+                    <!-- recent orders  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <p class="text-dark">Client id:  {{$client->id}}</p>
+                                <p class="text-dark">Client name:  {{$client->name}}</p>
+                                <p class="text-dark">Client email:  {{$client->email}}</p>
+                                <p class="text-dark">Client phone number: {{$client->phonenumber}}</p>
+                                <p class="text-dark">Client position: {{$client->job}}</p>
+                                <p class="text-dark">Organization:  {{$client->organization}}</p>
+                                <p class="text-dark">Business type: {{$client->businesstype}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end recent orders  -->
+                </div>
 
 
 

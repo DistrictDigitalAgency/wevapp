@@ -296,13 +296,17 @@ select.form-control {
 }
 
 textarea.form-control {
-    height: auto;
-    color: #71748d;
+    padding: 10px;
+    margin: 10px auto;
     background-color: #fff;
-    background-image: none;
-    border: 1px solid #d2d2e4;
-    border-radius: 2px;
-    padding: 12px 16px;
+    border: 1px solid #a1a1a1;
+    width: 90%;
+    outline: none;
+    font-size: 12px !important;
+    font-family: 'Open Sans', sans-serif !important;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
 input::-webkit-input-placeholder {
@@ -321,7 +325,19 @@ textarea:focus::-webkit-input-placeholder {
     color: #5969ff !important;
 }
 
-button.btn {}
+button.btn {
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 1px solid #a1a1a1;
+    width: 90%;
+    outline: none;
+    font-size: 12px !important;
+    font-family: 'Open Sans', sans-serif !important;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
 
 button.btn-default {}
 
@@ -981,8 +997,10 @@ Borders
 }
 
 .text-dark {
+    font-size: 14px;
     color: #3d405c !important;
-}
+    font-family: 'Poppins';
+    margin: 28px 80px !important;}
 
 .text-gray {
     color: #868aa5 !important;
@@ -3213,7 +3231,7 @@ btn-link
 .card-header {
     background-color: #fff;
     border-bottom: 1px solid #e6e6f2;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .card-title {}
@@ -7144,8 +7162,8 @@ Media Query
 .campaign_form{
     padding: 10px;
     margin: 10px auto;
-    background-color: #f1f1f1;
-    border: none;
+    background-color: #fff;
+    border: 1px solid #a1a1a1;
     width: 90%;
     outline: none;
     font-size: 12px !important;
